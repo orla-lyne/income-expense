@@ -1,0 +1,87 @@
+.dashboard { max-width: 1200px; margin: 0 auto; }
+
+.header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 2rem; 
+}
+.header h1 { color: var(--text); }
+.header select { 
+  padding: 0.5rem 1rem; 
+  border: 2px solid var(--border); 
+  border-radius: 0.5rem; 
+  background: var(--bg); 
+  color: var(--text); 
+  cursor: pointer;
+}
+.cards { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1rem; 
+  margin-bottom: 2rem; 
+}
+
+.card { 
+  background: var(--card); 
+  padding: 1.5rem; 
+  border-radius: 0.5rem; 
+  border: 2px solid var(--border); 
+  transition: 0.2s;
+}
+.card:hover { border-color: var(--blue); }
+
+.label { color: var(--text2); font-size: 0.875rem; }
+.value { font-size: 1.5rem; font-weight: bold; margin-top: 0.25rem; }
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-box { 
+  background: var(--card); 
+  padding: 1.5rem; 
+  border-radius: 0.5rem; 
+  border: 2px solid var(--border); 
+}
+.chart-box h3 { 
+  color: var(--text); 
+  margin-bottom: 1rem; 
+  font-size: 1rem;
+}
+
+.empty { 
+  text-align: center; 
+  padding: 2rem; 
+  color: var(--text2); 
+}
+
+
+.icon { 
+  width: 2.5rem; 
+  height: 2.5rem; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+  font-weight: bold; 
+}
+.date { font-size: 0.75rem; color: var(--text2); }
+
+.income { color: #10b981; font-weight: 600; }
+.expense { color: #ef4444; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .cards { grid-template-columns: 1fr; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .full-width { grid-column: 1; }
+  .header { flex-direction: column; align-items: stretch; gap: 1rem; }
+}
