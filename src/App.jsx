@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { AppProvider } from './context/AppContext';
-import { ThemeToggle } from './components/ThemeToggle';
+import { ThemeToggle } from './components/common/ThemeToggle';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Budgets from './pages/Budgets';
