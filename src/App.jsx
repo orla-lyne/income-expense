@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { ThemeProvider } from './context/ThemeContext';
-import { AppProvider } from './context/AppContext';
-import { ThemeToggle } from './components/common/ThemeToggle';
-import Dashboard from './pages/Dashboard';
-import Transactions from './pages/Transactions';
-import Budgets from './pages/Budgets';
+import { ThemeProvider } from './context/ThemeContext.jsx';
+import { AppProvider } from './context/AppContext.jsx';
+import { ThemeToggle } from './components/common/ThemeToggle.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import Transactions from './pages/Transactions.jsx';
+import Budgets from './pages/Budgets.jsx';
 import './App.css';
 
 function App() {

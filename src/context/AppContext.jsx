@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import { calcTotals } from '../utils/helpers';
 
 export const AppContext = createContext();

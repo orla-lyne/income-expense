@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useApp } from '../hooks/useApp';
-import { CATEGORIES } from '../utils/Constants';
-import { $ } from '../utils/helpers';
+import { useApp } from '../hooks/useApp.jsx';
+import { CATEGORIES } from '../utils/Constants.js';
+import { $ } from '../utils/helpers.js';
 import './Budgets.css';
 
 export default function Budgets() {
