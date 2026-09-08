@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Plus, X, Trash2, Search } from 'lucide-react';
 import { useApp } from '../hooks/useApp';
 import { $, fmtDate } from '../utils/helpers';
-import { CATEGORIES, TYPES, MONTHS } from '../utils/constants';
+import { CATEGORIES, TYPES, MONTHS } from '../utils/Constants';
 import './Transactions.css';
 
 const Form = ({ onClose, onSubmit, edit }) => {

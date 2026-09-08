@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../hooks/useApp';
 import { $, byCategory, calcTotals } from '../utils/helpers';
-import { CATEGORIES, MONTHS } from '../utils/constants';
+import { CATEGORIES, MONTHS } from '../utils/Constants';
 import {
   PieChart, Pie, Cell, ResponsiveContainer,
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid,
