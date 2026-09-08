@@ -1,11 +1,11 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { $, byCategory, calcTotals } from '../utils/helpers';
-import { CATEGORIES, MONTHS } from '../utils/Constants';
-import { 
-  PieChart, Pie, Cell, ResponsiveContainer, 
+import { CATEGORIES, MONTHS } from '../utils/constants';
+import {
+  PieChart, Pie, Cell, ResponsiveContainer,
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid,
-  BarChart, Bar, Legend 
+  BarChart, Bar, Legend
 } from 'recharts';
 import './Dashboard.css';
 
@@ -40,15 +40,15 @@ export default function Dashboard() {
   const getMonthlyData = () => {
     const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const result = [];
-    
+
     allMonths.forEach((monthName, index) => {
       const monthTxs = transactions.filter(t => {
         const date = new Date(t.date);
         return date.getMonth() === index;
       });
-      
+
       const monthData = calcTotals(monthTxs);
-      
+
       if (monthData.income > 0 || monthData.expenses > 0 || monthData.balance > 0) {
         result.push({
           month: monthName,
@@ -58,7 +58,7 @@ export default function Dashboard() {
         });
       }
     });
-    
+
     return result;
   };
 
@@ -82,7 +82,7 @@ export default function Dashboard() {
         <h1> Dashboard</h1>
         <select value={month} onChange={e => setMonth(e.target.value)}>
           <option value="">All Time</option>
-          {MONTHS.map((m, i) => <option key={m} value={`2024-${String(i+1).padStart(2,'0')}`}>{m}</option>)}
+          {MONTHS.map((m, i) => <option key={m} value={`2024-${String(i + 1).padStart(2, '0')}`}>{m}</option>)}
         </select>
       </div>
 
@@ -134,13 +134,13 @@ export default function Dashboard() {
           {pieData.length ? (
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
-                <Pie 
-                  data={pieData} 
-                  cx="50%" 
-                  cy="50%" 
-                  labelLine={false} 
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} 
-                  outerRadius={80} 
+                <Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={80}
                   dataKey="value"
                 >
                   {pieData.map((e, i) => <Cell key={i} fill={e.color} />)}
