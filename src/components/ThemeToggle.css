@@ -1,0 +1,10 @@
+.toggle {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--bg2);
+  border: 2px solid var(--blue);
+  cursor: pointer;
+  color: var(--text);
+  width: 100%;
+}
+.toggle:hover { background: var(--blue); color: white; }
