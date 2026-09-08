@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { AppProvider } from './context/AppContext';
@@ -15,10 +15,10 @@ function App() {
         <BrowserRouter>
           <div className="app">
             <aside className="sidebar">
-              <div className="logo">Expense Tracker</div>
+              <div className="logo">Tracker</div>
               <nav>
                 <Link to="/" className="link"> Dashboard</Link>
-                <Link to="/transactions" className="link"> Transactions</Link>
+                <Link to="/transactions" className="link">Transactions</Link>
                 <Link to="/budgets" className="link"> Budgets</Link>
               </nav>
               <ThemeToggle />

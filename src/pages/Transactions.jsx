@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Plus, X, Trash2, Search } from 'lucide-react';
-import { useApp } from '../context/AppContext';
+import { useApp } from '../hooks/useApp';
 import { $, fmtDate } from '../utils/helpers';
 import { CATEGORIES, TYPES, MONTHS } from '../utils/constants';
 import './Transactions.css';

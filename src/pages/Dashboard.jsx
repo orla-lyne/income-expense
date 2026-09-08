@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../context/AppContext';
+import { useApp } from '../hooks/useApp';
 import { $, byCategory, calcTotals } from '../utils/helpers';
 import { CATEGORIES, MONTHS } from '../utils/constants';
 import {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../context/AppContext';
+import { useApp } from '../hooks/useApp';
 import { CATEGORIES } from '../utils/constants';
 import { $ } from '../utils/helpers';
 import './Budgets.css';
