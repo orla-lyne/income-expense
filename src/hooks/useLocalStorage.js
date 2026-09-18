@@ -5,11 +5,18 @@ export function useLocalStorage(key, initial) {
     try {
       const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : initial;
-    } catch { return initial; }
+    } catch {
+      return initial;
+    }
   });
 
-  useEffect(() =>
-     { localStorage.setItem(key, JSON.stringify(value)); }, [key, value]);
+  useEffect(() => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      /* quota / private mode — ignore */
+    }
+  }, [key, value]);
 
   return [value, setValue];
 }

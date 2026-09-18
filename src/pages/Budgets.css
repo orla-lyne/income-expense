@@ -190,3 +190,25 @@
         justify-content: space-between;
     }
 }
+.month-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.progress .info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+
+.item-header .left .spent { margin-top: 0.25rem; }
+.item-header .right .budget {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
