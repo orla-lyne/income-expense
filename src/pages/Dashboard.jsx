@@ -1,7 +1,8 @@
+
 import { useState } from 'react';
 import { useApp } from '../hooks/useApp.jsx';
-import { $, byCategory, calcTotals } from '../utils/helpers';
-import { CATEGORIES, MONTHS } from '../utils/Constants.js';
+import { $, byCategory, calcTotals } from '../utils/helpers.js';
+import { MONTHS } from '../utils/Constants.js';
 import {
   PieChart, Pie, Cell, ResponsiveContainer,
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid,
@@ -18,7 +19,7 @@ const Card = ({ label, value, color }) => (
 
 const NoDataMessage = () => (
   <div className="empty">
-    <p> Add transactions to see charts</p>
+    <p>Add transactions to see charts</p>
     <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>
       Go to Transactions and add some income and expenses
     </p>
@@ -26,15 +27,15 @@ const NoDataMessage = () => (
 );
 
 export default function Dashboard() {
-  const { transactions } = useApp();
+  const { transactions, categories } = useApp();
   const [month, setMonth] = useState('');
 
   const filtered = month ? transactions.filter(t => t.date.startsWith(month)) : transactions;
   const data = calcTotals(filtered);
 
-  const pieData = Object.entries(byCategory(filtered)).map(([cat, amt]) => {
-    const c = CATEGORIES.find(x => x.id === cat);
-    return { name: c?.name || cat, value: amt, color: c?.color || '#10b981' };
+  const pieData = Object.entries(byCategory(filtered)).map(([catId, amt]) => {
+    const c = categories.find(x => x.id === catId);
+    return { name: c?.name || catId, value: amt, color: c?.color || '#10b981' };
   });
 
   const getMonthlyData = () => {
@@ -79,10 +80,12 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <div className="header">
-        <h1> Dashboard</h1>
+        <h1>Dashboard</h1>
         <select value={month} onChange={e => setMonth(e.target.value)}>
           <option value="">All Time</option>
-          {MONTHS.map((m, i) => <option key={m} value={`2024-${String(i + 1).padStart(2, '0')}`}>{m}</option>)}
+          {MONTHS.map((m, i) => (
+            <option key={m} value={`2026-${String(i + 1).padStart(2, '0')}`}>{m}</option>
+          ))}
         </select>
       </div>
 
@@ -94,13 +97,13 @@ export default function Dashboard() {
 
       <div className="charts-grid">
         <div className="chart-box full-width">
-          <h3> Income vs Expenses by Month</h3>
+          <h3>Income vs Expenses by Month</h3>
           {hasData ? (
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={incomeExpenseData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                 <XAxis dataKey="month" tick={{ fill: 'var(--text2)' }} />
-                <YAxis tickFormatter={$} tick={{ fill: 'var(--text2)' }} />
+                <YAxis width={80} tickFormatter={$} tick={{ fill: 'var(--text2)' }} />
                 <Tooltip formatter={v => $(v)} />
                 <Legend />
                 <Bar dataKey="Income" fill="#10b981" radius={[4, 4, 0, 0]} />
@@ -113,13 +116,13 @@ export default function Dashboard() {
         </div>
 
         <div className="chart-box">
-          <h3> Balance Over Time</h3>
+          <h3>Balance Over Time</h3>
           {hasData ? (
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={balanceData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                 <XAxis dataKey="month" tick={{ fill: 'var(--text2)' }} />
-                <YAxis tickFormatter={$} tick={{ fill: 'var(--text2)' }} />
+                <YAxis width={80} tickFormatter={$} tick={{ fill: 'var(--text2)' }} />
                 <Tooltip formatter={v => $(v)} />
                 <Line type="monotone" dataKey="balance" stroke="var(--blue)" strokeWidth={3} dot={{ fill: 'var(--blue)', r: 4 }} />
               </LineChart>
@@ -130,7 +133,7 @@ export default function Dashboard() {
         </div>
 
         <div className="chart-box">
-          <h3> Spending by Category</h3>
+          <h3>Spending by Category</h3>
           {pieData.length ? (
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
@@ -153,7 +156,6 @@ export default function Dashboard() {
           )}
         </div>
       </div>
-
     </div>
   );
 }

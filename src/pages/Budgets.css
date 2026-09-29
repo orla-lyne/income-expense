@@ -82,19 +82,25 @@
     color: var(--text);
 }
 
-.spent {
-    font-size: 0.875rem;
-    color: var(--text2);
-}
-
 .right {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.budget {
-    font-size: 0.875rem;
+.budget-display-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.spent-text {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.budget-text {
     color: var(--text2);
 }
 
@@ -164,9 +170,10 @@
 .info {
     display: flex;
     justify-content: space-between;
-    font-size: 0.75rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
     color: var(--text2);
-    margin-top: 0.25rem;
 }
 
 .over {
@@ -176,6 +183,23 @@
     margin-top: 0.25rem;
 }
 
+.month-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+
+}
+
+.month-picker select {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+}
+
 @media (max-width: 768px) {
     .summary {
         grid-template-columns: 1fr;
@@ -183,32 +207,12 @@
 
     .item-header {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
     }
 
     .right {
+        width: 100%;
         justify-content: space-between;
+        margin-top: 0.5rem;
     }
-}
-.month-picker {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.progress .info {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text2);
-}
-
-.item-header .left .spent { margin-top: 0.25rem; }
-.item-header .right .budget {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 0.5rem;
 }

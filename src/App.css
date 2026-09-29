@@ -1,3 +1,4 @@
+
 .app { display: flex; min-height: 100vh; }
 
 .sidebar {
@@ -24,61 +25,61 @@
 
 .sidebar nav { 
   flex: 1;
-   display: flex; 
-   flex-direction: column;
-    gap: 0.5rem; }
+  display: flex; 
+  flex-direction: column;
+  gap: 0.5rem; 
+}
+
 .link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   color: var(--text2);
   text-decoration: none;
   transition: 0.2s;
 }
-.link:hover { 
+
+.link:hover, .active-link { 
   background: var(--blue); 
-  color: white; }
+  color: white; 
+}
 
 .main {
-   flex: 1; 
-   padding: 2rem;
-    overflow-y: auto; 
-  }
+  flex: 1; 
+  padding: 2rem;
+  overflow-y: auto; 
+}
 
 @media (max-width: 768px) {
   .sidebar { 
-    width: 60px; 
+    width: 70px; 
     padding: 1rem 0.5rem; 
     align-items: center;
-   }
+  }
+  
   .logo { 
     font-size: 0; 
+    border-bottom: none;
+    margin-bottom: 1rem;
+    padding-bottom: 0;
   }
+  
   .logo::before {
-     content: '💰'; 
-     font-size: 1.5rem; 
-    }
+    content: '💰'; 
+    font-size: 1.5rem; 
+  }
 
   .link {
-    font-size: 0;
     padding: 0.75rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
     width: 100%;
   }
-  
-  .link:nth-child(1)::before { 
-    content: '📊'; 
-    font-size: 1.2rem;
-   }
-  .link:nth-child(2)::before { 
-    content: '💸';
-     font-size: 1.2rem; 
-    }
-  .link:nth-child(3)::before { 
-    content: '🎯';
-     font-size: 1.2rem;
-     }
+
+  .link-label {
+    display: none; 
+  }
 
   .main { 
     padding: 1rem; 

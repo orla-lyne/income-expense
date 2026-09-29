@@ -1,9 +1,10 @@
+
 import { useState } from 'react';
 import { useApp } from '../hooks/useApp.jsx';
 import { $ } from '../utils/helpers.js';
 import './Budgets.css';
 
-const thisMonthKey = () => new Date().toISOString().slice(0, 7); // "2026-09"
+const thisMonthKey = () => new Date().toISOString().slice(0, 7);
 
 const monthLabel = (ym) => {
   const [y, m] = ym.split('-');
@@ -31,7 +32,7 @@ export default function Budgets() {
       <p className="sub">Set monthly limits</p>
 
       <div className="month-picker">
-        <label htmlFor="budget-month">Month:</label>
+        <label htmlFor="budget-month">Month: </label>
         <select
           id="budget-month"
           value={monthKey}
@@ -55,10 +56,7 @@ export default function Budgets() {
         ].map((item, i) => (
           <div key={i} className="summary-item">
             <div className="label">{item.label}</div>
-            <div
-              className="value"
-              style={{ color: item.color || 'var(--text)' }}
-            >
+            <div className="value" style={{ color: item.color || 'var(--text)' }}>
               {$(item.value)}
             </div>
           </div>
@@ -69,9 +67,7 @@ export default function Budgets() {
         {categories.map(cat => {
           const budget = getBudget(monthKey, cat.id);
           const spentAmt = spent(cat.id, monthKey);
-          const pct = budget > 0
-            ? Math.min((spentAmt / budget) * 100, 100)
-            : 0;
+          const pct = budget > 0 ? Math.min((spentAmt / budget) * 100, 100) : 0;
           const over = budget > 0 && spentAmt > budget;
           const isEditing = editing === cat.id;
 
@@ -79,10 +75,9 @@ export default function Budgets() {
             <div key={cat.id} className="item">
               <div className="item-header">
                 <div className="left">
-                  <div className="color" style={{ background: cat.color }} />
-                  <div>
-                    <div className="name">{cat.name}</div>
-                    <div className="spent">Spent: {$(spentAmt)}</div>
+                  <div className="color" style={{ background: cat.color || 'var(--blue)' }} />
+                  <div className="name-wrapper">
+                    <span className="name">{cat.name}</span>
                   </div>
                 </div>
                 <div className="right">
@@ -104,16 +99,15 @@ export default function Budgets() {
                       >
                         Save
                       </button>
-                      <button
-                        onClick={() => setEditing(null)}
-                        className="cancel"
-                      >
+                      <button onClick={() => setEditing(null)} className="cancel">
                         Cancel
                       </button>
                     </div>
                   ) : (
-                    <>
-                      <span className="budget">Budget: {$(budget)}</span>
+                    <div className="budget-display-row">
+                      <span className="spent-text">Spent: {$(spentAmt)}</span>
+                      <span className="budget-text">of {$(budget)}</span>
+
                       <button
                         onClick={() => {
                           setEditing(cat.id);
@@ -128,7 +122,7 @@ export default function Budgets() {
                           <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                         </svg>
                       </button>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
@@ -140,10 +134,7 @@ export default function Budgets() {
                       className="fill"
                       style={{
                         width: `${pct}%`,
-                        background:
-                          pct < 70 ? '#10b981'
-                          : pct < 90 ? '#f59e0b'
-                          : '#ef4444',
+                        background: pct < 70 ? '#10b981' : pct < 90 ? '#f59e0b' : '#ef4444',
                       }}
                     />
                   </div>
